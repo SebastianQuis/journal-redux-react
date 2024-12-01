@@ -8,4 +8,4 @@ export const store = configureStore({
   devTools: true,
 });
 
-console.log(store.getState());
+// console.log(store.getState());
