@@ -9,6 +9,7 @@ import { useForm } from "../../hooks";
 import {
   checkingAuthentication,
   startGoogleAuthenticacion,
+  startSignInUserWithEmailPassword,
 } from "../../store/auth/thunks";
 import { useMemo } from "react";
 
@@ -19,14 +20,14 @@ export const LoginPage = () => {
   const dispatch = useDispatch();
 
   const { email, password, onInputChange, formState } = useForm({
-    email: "sebastian@google.com",
-    password: "123456",
+    email: "",
+    password: "",
   });
 
   const onSubmit = (event) => {
+    console.log("onsubmit");
     event.preventDefault();
-    dispatch(checkingAuthentication(email, password));
-    console.log({ email, password });
+    dispatch(startSignInUserWithEmailPassword(formState));
   };
 
   const onGoogleSignIn = () => {
